@@ -1,11 +1,11 @@
 Problem: Pick k scores out of n scores such that the sum of these k scores is the 
-largest.<br>
+largest.
 
-Algorithm:<br>
-FOR i = 1 to k<br>
-pick out the largest number and<br>
-delete this number from the input.<br>
-ENDFOR<br>
+Algorithm:
+FOR i = 1 to k
+pick out the largest number and
+delete this number from the input.
+ENDFOR
 code: 
 
 #include <bits/stdc++.h>
