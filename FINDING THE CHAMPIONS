@@ -1,0 +1,33 @@
+Problem: Pick k scores out of n scores such that the sum of these k scores is the 
+largest.<br>
+
+Algorithm:<br>
+FOR i = 1 to k<br>
+pick out the largest number and<br>
+delete this number from the input.<br>
+ENDFOR<br>
+code: 
+
+#include <bits/stdc++.h>
+#include <vector>
+using namespace std;
+
+vector<int>findChampion(vector<int>scores,int k){
+    vector<int>champions;
+    sort(scores.begin(),scores.end(),greater<int>());
+    for(int i=0;i<k;i++){
+        champions.push_back(scores[i]);
+    }
+    return champions;
+}
+
+int main(){
+    vector<int>scores={10,5,15,7,20,18};
+    int k=3;
+    vector<int>ans=findChampion(scores,k);
+    cout<<"Champion scores: ";
+    for(int score: ans){
+        cout<<score<<" ";
+    }
+    cout<<endl;
+}
