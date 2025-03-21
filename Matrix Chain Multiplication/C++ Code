@@ -1,0 +1,96 @@
+//This is the C++ code for MCM
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to print the optimal parenthesization
+void printOptimalParenthesis(int i, int j, vector<vector<int>> &s, char &name) {
+    if (i == j) {
+        cout << name++;
+        return;
+    }
+    cout << "(";
+    printOptimalParenthesis(i, s[i][j], s, name);
+    printOptimalParenthesis(s[i][j] + 1, j, s, name);
+    cout << ")";
+}
+
+// Function to compute the minimum scalar multiplication
+void matrixChainMultiplication(vector<int> &dims) {
+    // Number of matrices
+    int n = dims.size() - 1;
+    vector<vector<int>> m(n, vector<int>(n, 0));
+    vector<vector<int>> s(n, vector<int>(n, 0));
+
+    // Compute the optimal order using DP
+    for (int len = 2; len <= n; len++) {
+        for (int i = 0; i < n - len + 1; i++) {
+            int j = i + len - 1;
+            m[i][j] = INT_MAX;
+            for (int k = i; k < j; k++) {
+                int cost = m[i][k] + m[k + 1][j] + dims[i] * dims[k + 1] * dims[j + 1];
+                if (cost < m[i][j]) {
+                    m[i][j] = cost;
+                    s[i][j] = k;
+                }
+            }
+        }
+    }
+
+    // Print m[i][j] table
+    cout << "Minimum Cost Table (m[i][j]):\n";
+    for (const auto &row : m) {
+        for (int val : row) {
+            if (val == 0)
+                cout << setw(8) << "-";
+            else
+                cout << setw(8) << val;
+        }
+        cout << endl;
+    }
+
+    // Print s[i][j] table
+    cout << "\nSplit Table (s[i][j]):\n";
+    for (const auto &row : s) {
+        for (int val : row) {
+            if (val == 0)
+                cout << setw(8) << "-";
+            else
+                cout << setw(8) << val;
+        }
+        cout << endl;
+    }
+
+    // Print the optimal parenthesization
+    cout << "\nOptimal Parenthesization: ";
+    char name = 'A';
+    printOptimalParenthesis(0, n - 1, s, name);
+    cout << endl;
+
+    // Print the minimum number of scalar multiplications
+    cout << "Minimum number of scalar multiplications: " << m[0][n - 1] << endl;
+}
+
+// Main function
+int main() {
+    //Input dimension
+    vector<int> dims = {10, 20, 5, 40, 7, 60, 15, 35};
+    matrixChainMultiplication(dims);
+    return 0;
+}
+
+//For taking user input we have to modify main function as like below
+int main() {
+    int n;
+    cout << "Enter the number of matrices: ";
+    cin >> n;
+
+    vector<int> dims(n + 1);
+    cout << "Enter the " << n + 1 << " dimensions: ";
+    for (int i = 0; i <= n; i++) {
+        cin >> dims[i];
+    }
+
+    matrixChainMultiplication(dims);
+    return 0;
+}
