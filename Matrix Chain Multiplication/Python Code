@@ -1,0 +1,68 @@
+import sys
+
+# Printing optimal parenthesization
+def print_optimal_parenthesis(i, j, s, name):
+    if i == j:
+        print(name[0], end="")
+        name[0] = chr(ord(name[0]) + 1)
+        return
+    print("(", end="")
+    print_optimal_parenthesis(i, s[i][j], s, name)
+    print_optimal_parenthesis(s[i][j] + 1, j, s, name)
+    print(")", end="")
+
+# Computing minimum scalar multiplication
+def matrix_chain_multiplication(dims):
+    # Number of matrices
+    n = len(dims) - 1 
+    m = [[0] * n for _ in range(n)]
+    s = [[0] * n for _ in range(n)]
+
+    # Compute the optimal order using DP
+    for length in range(2, n + 1):  
+        for i in range(n - length + 1):
+            j = i + length - 1
+            m[i][j] = sys.maxsize
+            for k in range(i, j):
+                cost = m[i][k] + m[k + 1][j] + dims[i] * dims[k + 1] * dims[j + 1]
+                if cost < m[i][j]:
+                    m[i][j] = cost
+                    s[i][j] = k
+
+    # Printing m[i][j] table
+    print("\nMinimum Cost Table (m[i][j]):")
+    for row in m:
+        print("   ".join(str(val) if val != 0 else "-" for val in row))
+
+    # Printing s[i][j] table
+    print("\nSplit Table (s[i][j]):")
+    for row in s:
+        print("   ".join(str(val) if val != 0 else "-" for val in row))
+
+    # Printing optimal parenthesization
+    print("\nOptimal Parenthesization: ", end="")
+    name = ["A"]
+    print_optimal_parenthesis(0, n - 1, s, name)
+    print()
+
+    # Printing minimum number of scalar multiplications
+    print(f"Minimum number of scalar multiplications: {m[0][n - 1]}")
+
+# Main function
+if __name__ == "__main__":
+    # Input dimensions
+    dims = [10, 20, 5, 40, 7, 60, 15, 35]
+    matrix_chain_multiplication(dims)
+
+
+//For taking user input we have to modify main function as like below
+# Main function
+if __name__ == "__main__":
+    # Taking user input
+    dims = list(map(int, input("Enter the matrix dimensions separated by spaces: ").split()))
+
+    # Checking if the input is valid
+    if len(dims) < 2:
+        print("Error: At least two dimensions are required!")
+    else:
+        matrix_chain_multiplication(dims)
