@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+#include <vector>
+using namespace std;
+
+// Function to find LCS of three strings
+string findLCS(string s1, string s2, string s3) {
+    int m = s1.length(), n = s2.length(), o = s3.length();
+    vector<vector<vector<int>>> dp(m + 1, vector<vector<int>>(n + 1, vector<int>(o + 1, 0)));
+    
+    // Fill the DP table
+    for (int i = 1; i <= m; i++) {
+        for (int j = 1; j <= n; j++) {
+            for (int k = 1; k <= o; k++) {
+                if (s1[i - 1] == s2[j - 1] && s2[j - 1] == s3[k - 1]) {
+                    dp[i][j][k] = dp[i - 1][j - 1][k - 1] + 1;
+                } else {
+                    dp[i][j][k] = max({dp[i - 1][j][k], dp[i][j - 1][k], dp[i][j][k - 1]});
+                }
+            }
+        }
+    }
+    
+    // Backtrack to find the LCS string
+    int i = m, j = n, k = o;
+    string lcs = "";
+    while (i > 0 && j > 0 && k > 0) {
+        if (s1[i - 1] == s2[j - 1] && s2[j - 1] == s3[k - 1]) {
+            lcs = s1[i - 1] + lcs;
+            i--; j--; k--;
+        } else if (dp[i - 1][j][k] == dp[i][j][k]) {
+            i--;
+        } else if (dp[i][j - 1][k] == dp[i][j][k]) {
+            j--;
+        } else {
+            k--;
+        }
+    }
+    
+    return lcs;
+}
+
+int main() {
+    string s1, s2, s3;
+    cout << "Enter three strings: ";
+    cin >> s1 >> s2 >> s3;
+    
+    string lcs = findLCS(s1, s2, s3);
+    cout << "Length of LCS = " << lcs.length() << endl;
+    cout << "LCS = " << lcs << endl;
+    
+    return 0;
+}
