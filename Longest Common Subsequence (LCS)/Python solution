@@ -1,0 +1,40 @@
+def find_lcs(s1, s2, s3):
+    m, n, o = len(s1), len(s2), len(s3)
+    dp = [[[0] * (o + 1) for _ in range(n + 1)] for _ in range(m + 1)]
+    
+    # Fill the DP table
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            for k in range(1, o + 1):
+                if s1[i - 1] == s2[j - 1] == s3[k - 1]:
+                    dp[i][j][k] = dp[i - 1][j - 1][k - 1] + 1
+                else:
+                    dp[i][j][k] = max(dp[i - 1][j][k], dp[i][j - 1][k], dp[i][j][k - 1])
+    
+    # Backtrack to find the LCS string
+    i, j, k = m, n, o
+    lcs = []
+    while i > 0 and j > 0 and k > 0:
+        if s1[i - 1] == s2[j - 1] == s3[k - 1]:
+            lcs.append(s1[i - 1])
+            i -= 1
+            j -= 1
+            k -= 1
+        elif dp[i - 1][j][k] == dp[i][j][k]:
+            i -= 1
+        elif dp[i][j - 1][k] == dp[i][j][k]:
+            j -= 1
+        else:
+            k -= 1
+
+    return "".join(reversed(lcs))
+
+
+# Input from the user
+s1 = input("Enter first string: ")
+s2 = input("Enter second string: ")
+s3 = input("Enter third string: ")
+
+lcs = find_lcs(s1, s2, s3)
+print("Length of LCS =", len(lcs))
+print("LCS =", lcs)
