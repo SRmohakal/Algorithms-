@@ -27,14 +27,14 @@ Instead of recalculating the hash from scratch in each step, **rolling hash** al
 #### **Hash Function Formula**:
 For a substring s[i:i+m] of length m, the hash value is computed as:
 
-hash(s) = (c<sub>1</sub>.d<sup>m-1</sup> + c<sub>2</sub>.d<sup>m-2</sup> + ... + c<sub>m</sub>.d<sup>0</sup>) mod q
+hash(s) = (c<sub>1</sub>.d<sup>(m-1)</sup> + c<sub>2</sub>.d<sup>(m-2)</sup> + ... + c<sub>m</sub>.d<sup>0</sup>) mod q
 
 Where:
 - d = Chosen base (e.g., **256** for ASCII characters).
 - q = Prime number (to avoid collisions).
 
 When shifting, update the hash efficiently:
-new_hash = ( (old_hash - old_char.d<sup>m-1</sup>).d + new_char ) mod q
+new_hash = ( (old_hash - old_char.d<sup>(m-1)</sup>).d + new_char ) mod q
 
 This ensures a fast recalculation in **O(1)** time instead of O(m).
 
@@ -79,7 +79,7 @@ Calculating initial hash for the first three characters of `"ABCCBAABCCBA"`.
 | Worst Case | O(n.m) (due to hash collisions) |
 
 - **Best Case (No Hash Collisions)**: O(n)
-- **Worst Case (Many Hash Collisions)**: O(n \cdot m)
+- **Worst Case (Many Hash Collisions)**: O(n.m)
 
 ---
 
