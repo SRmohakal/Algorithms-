@@ -5,8 +5,8 @@ The **Rabin-Karp algorithm** is a powerful **string matching algorithm** that us
 ---
 
 ## **1. Why Rabin-Karp?**
-- The **naïve approach** takes **\(O(m \cdot n)\)** time, which is inefficient for large texts.
-- **Rabin-Karp uses hashing** to compare substrings quickly, achieving an average time complexity of **\(O(n)\)**.
+- The **naïve approach** takes **O(m.n)** time, which is inefficient for large texts.
+- **Rabin-Karp uses hashing** to compare substrings quickly, achieving an average time complexity of **O(n)**.
 - It is **ideal for multiple pattern searching** (e.g., plagiarism detection, digital forensics).
 
 ---
@@ -25,22 +25,18 @@ The **Rabin-Karp algorithm** is a powerful **string matching algorithm** that us
 Instead of recalculating the hash from scratch in each step, **rolling hash** allows for quick updates when moving to the next substring.
 
 #### **Hash Function Formula**:
-For a substring \( s[i:i+m] \) of length \( m \), the hash value is computed as:
+For a substring s[i:i+m] of length m, the hash value is computed as:
 
-\[
-hash(s) = (c_1 \cdot d^{m-1} + c_2 \cdot d^{m-2} + ... + c_m \cdot d^0) \mod q
-\]
+hash(s) = (c<sub>1</sub>.d<sup>m-1</sup> + c<sub>2</sub>.d<sup>m-2</sup> + ... + c<sub>m</sub>.d<sup>0</sup>) mod q
 
 Where:
-- \( d \) = Chosen base (e.g., **256** for ASCII characters).
-- \( q \) = Prime number (to avoid collisions).
+- d = Chosen base (e.g., **256** for ASCII characters).
+- q = Prime number (to avoid collisions).
 
 When shifting, update the hash efficiently:
-\[
-new\_hash = ( (old\_hash - old\_char \cdot d^{m-1}) \cdot d + new\_char ) \mod q
-\]
+new_hash = ( (old_hash - old_char.d<sup>m-1</sup>).d + new_char ) mod q
 
-This ensures a fast recalculation in **\(O(1)\)** time instead of \(O(m)\).
+This ensures a fast recalculation in **O(1)** time instead of O(m).
 
 ---
 
@@ -48,7 +44,7 @@ This ensures a fast recalculation in **\(O(1)\)** time instead of \(O(m)\).
 ### **Given:**
 Text: `"ABCCBAABCCBA"`  
 Pattern: `"CBA"`  
-Prime \(q = 101\), Base \(d = 256\)
+Prime q = 101, Base d = 256
 
 ### **Initial Hash Computation:**
 ```
@@ -77,13 +73,13 @@ Calculating initial hash for the first three characters of `"ABCCBAABCCBA"`.
 ## **6. Complexity Analysis**
 | Step | Time Complexity |
 |------|---------------|
-| Hash Computation | \(O(m)\) |
-| Hash Update (Rolling Hash) | \(O(1)\) |
-| Pattern Matching | \(O(n)\) (average case) |
-| Worst Case | \(O(n \cdot m)\) (due to hash collisions) |
+| Hash Computation | O(m) |
+| Hash Update (Rolling Hash) | O(1) |
+| Pattern Matching | O(n) (average case) |
+| Worst Case | O(n.m) (due to hash collisions) |
 
-- **Best Case (No Hash Collisions)**: \(O(n)\)
-- **Worst Case (Many Hash Collisions)**: \(O(n \cdot m)\)
+- **Best Case (No Hash Collisions)**: O(n)
+- **Worst Case (Many Hash Collisions)**: O(n \cdot m)
 
 ---
 
@@ -105,13 +101,3 @@ Calculating initial hash for the first three characters of `"ABCCBAABCCBA"`.
 - Fast search in large **text databases** by precomputing **hash indices**.
 
 ---
-
----
-
-### 🚀 **Next Steps**
-Would you like to explore:
-- **Aho-Corasick** (for **fast multi-pattern matching**)?
-- **Comparison of all algorithms**?
-- **More optimization techniques**?
-
-Let me know what interests you! 😊
