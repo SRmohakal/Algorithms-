@@ -97,3 +97,22 @@ Pattern found at index 7
 ```
 
 ---
+
+### **🔹Hash Calculation Using Rolling Hash**
+```python
+def calculate_hash(s, d=256, q=101):
+    hash_value = 0
+    m = len(s)
+
+    for i in range(m):
+        hash_value = (hash_value * d + ord(s[i])) % q  # Compute hash
+
+    return hash_value
+
+text = "ABABAC"
+hash_value = calculate_hash(text)
+
+print(f"Hash of '{text}' is: {hash_value}")
+```
+
+---
