@@ -70,7 +70,7 @@ Calculating initial hash for the first three characters of `"ABCCBAABCCBA"`.
 
 ---
 
-## **6. Complexity Analysis**
+## **5. Complexity Analysis**
 | Step | Time Complexity |
 |------|---------------|
 | Hash Computation | O(m) |
@@ -83,7 +83,7 @@ Calculating initial hash for the first three characters of `"ABCCBAABCCBA"`.
 
 ---
 
-## **7. Applications of Rabin-Karp**
+## **6. Applications of Rabin-Karp**
 ### ✅ **Plagiarism Detection**
 - **Fast multiple pattern searches** by hashing phrases in a document.
 - Used in tools like **Turnitin** and **Copyscape**.
