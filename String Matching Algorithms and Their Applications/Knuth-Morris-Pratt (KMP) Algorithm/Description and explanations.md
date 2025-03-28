@@ -37,59 +37,7 @@ LPS Array: `[0, 0, 1, 2, 0, 1, 2, 3, 4]`
 
 ---
 
-### **4. KMP Implementation in Python**
-```python
-def compute_lps(pattern):
-    m = len(pattern)
-    lps = [0] * m  
-    j = 0  # Length of the previous longest prefix suffix
-    i = 1  # Start from second character
-
-    while i < m:
-        if pattern[i] == pattern[j]:
-            j += 1
-            lps[i] = j
-            i += 1
-        else:
-            if j != 0:
-                j = lps[j - 1]
-            else:
-                lps[i] = 0
-                i += 1
-    return lps
-
-def kmp_search(text, pattern):
-    n = len(text)
-    m = len(pattern)
-    lps = compute_lps(pattern)
-
-    i = 0  # Index for text
-    j = 0  # Index for pattern
-
-    while i < n:
-        if pattern[j] == text[i]:
-            i += 1
-            j += 1
-
-        if j == m:  # Match found
-            print(f"Pattern found at index {i - j}")
-            j = lps[j - 1]  # Use LPS to avoid redundant comparisons
-
-        elif i < n and pattern[j] != text[i]:  # Mismatch
-            if j != 0:
-                j = lps[j - 1]
-            else:
-                i += 1
-
-# Example Usage
-text = "ABABDABACDABABCABAB"
-pattern = "ABABCABAB"
-kmp_search(text, pattern)
-```
-
----
-
-### **5. Example Walkthrough**
+### **4. Example Walkthrough**
 #### **Given:**
 Text: `"ABABDABACDABABCABAB"`  
 Pattern: `"ABABCABAB"`
@@ -105,14 +53,14 @@ Pattern found at **index 10**.
 
 ---
 
-### **6. Complexity Analysis**
+### **5. Complexity Analysis**
 - **Preprocessing LPS Array**: \(O(m)\)
 - **Pattern Searching**: \(O(n)\)
-- **Total Complexity**: **\(O(n + m)\)** (Much better than naïve \(O(m \cdot n)\))
+- **Total Complexity**: **\(O(n + m)\)** (Much better than naïve \(O(m.n)\))
 
 ---
 
-### **7. Applications of KMP Algorithm**
+### **6. Applications of KMP Algorithm**
 - **Text Searching** (e.g., searching keywords in documents).
 - **Spam Detection** (detecting repeated patterns in emails).
 - **DNA Sequence Matching** (finding genetic patterns).
@@ -121,19 +69,18 @@ Pattern found at **index 10**.
 
 ---
 
-### **8. Why is KMP Better than Naïve Approach?**
+### **7. Why is KMP Better than Naïve Approach?**
 | Feature | Naïve Algorithm | KMP Algorithm |
 |---------|---------------|--------------|
 | Best Case | \(O(n)\) | \(O(n)\) |
-| Worst Case | \(O(m \cdot n)\) | \(O(n + m)\) |
+| Worst Case | \(O(m.n)\) | \(O(n + m)\) |
 | Redundant Comparisons | Yes | No |
 | Preprocessing Needed | No | Yes (LPS) |
 
 ---
 
-### **9. Conclusion**
+### **8. Conclusion**
 - The **KMP Algorithm** is an efficient pattern matching approach.
 - It avoids unnecessary re-evaluations by utilizing the **LPS array**.
 - It is widely used in real-world applications requiring fast and efficient search.
 
-Would you like me to explain another algorithm, or do you have any questions on KMP? 😊
