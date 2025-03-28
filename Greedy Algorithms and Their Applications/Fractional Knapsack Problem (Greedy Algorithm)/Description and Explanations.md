@@ -11,9 +11,7 @@ The **Fractional Knapsack Problem** is an optimization problem where we are give
 ## **Greedy Approach**
 ### **Steps of the Algorithm**:
 1. **Calculate the value-to-weight ratio** for each item.  
-   \[
-   \text{Ratio} = \frac{\text{Value}}{\text{Weight}}
-   \]
+    Ratio = Value/Weight
 2. **Sort items** in descending order based on the ratio.  
 3. **Pick items greedily**:
    - Take as much as possible from the highest ratio item.
