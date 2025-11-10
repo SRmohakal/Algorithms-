@@ -34,7 +34,7 @@ CountingSemaphore/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/<SRmohakal>/CountingSemaphore.git
+   git clone https://github.com/SRmohakal/CountingSemaphore.git
    cd CountingSemaphore
    ```
 
@@ -79,7 +79,7 @@ No process is waiting. Slot freed. (Available slots: 1)
 ### 🧑‍💻 Author
 
 **Shourov Roy**
-📧 [[shourovcsesust@gmail.com](mailto:your-email@example.com)]
+📧 [shourovcsesust@gmail.com](mailto:your-email@example.com)
 🌐 [https://github.com/SRmohakal](https://github.com/your-username)
 
 ---
