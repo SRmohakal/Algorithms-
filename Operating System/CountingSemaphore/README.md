@@ -34,7 +34,7 @@ CountingSemaphore/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/<your-username>/CountingSemaphore.git
+   git clone https://github.com/<SRmohakal>/CountingSemaphore.git
    cd CountingSemaphore
    ```
 
@@ -49,7 +49,7 @@ CountingSemaphore/
 
 ---
 
-### 🧠 Example Output
+### 🧠 Sample Output
 
 ```
 Process-1(inactive) tries to enter critical section.
@@ -78,9 +78,9 @@ No process is waiting. Slot freed. (Available slots: 1)
 
 ### 🧑‍💻 Author
 
-**Your Name**
-📧 [[your-email@example.com](mailto:your-email@example.com)]
-🌐 [https://github.com/your-username](https://github.com/your-username)
+**Shourov Roy**
+📧 [[shourovcsesust@gmail.com](mailto:your-email@example.com)]
+🌐 [https://github.com/SRmohakal](https://github.com/your-username)
 
 ---
 
