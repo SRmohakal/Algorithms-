@@ -108,4 +108,4 @@ B.Sc. in Computer Science Student
 This project is licensed under the **MIT License** — free for educational and learning purposes.
 
 ---
-#OperatingSystem #Python #socket-programming #client-server #chat-application #computer-networks #OSProject
+`#OperatingSystem` `#Python` `#socket-programming` `#client-server` `#chat-application` `#computer-networks` `#OSProject`
