@@ -92,14 +92,21 @@ Philosopher 3 starts eating
 
 ## Author
 
-**Shourov Roy**
-B.Sc. in Computer Science Student
-📍 Shahjalal University of Science and Technology, Bangladesh
-🗓️ Year: 2025
+**Shourov Roy**<br>
+B.Sc. in Computer Science Student<br>
+📍 Shahjalal University of Science and Technology, Bangladesh<br>
+📧 [shourovcsesust@gmail.com](mailto:your-email@example.com) <br>
+🌐 [https://github.com/SRmohakal](https://github.com/your-username) <br>
+🗓️ Year: 2025 <br>
 ⭐ *Feel free to fork this repo and give it a star if you found it useful!*
+
+---
+
+### 🪪 License
+
+This project is licensed under the **MIT License** — feel free to use, modify, and share it for learning purposes.
 
 ---
 
 `#OperatingSystem` `#Python` `#Semaphore` `#Synchronization` `#Deadlock` `#Threading` `#OSProject`
 
-```
