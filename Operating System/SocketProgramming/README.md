@@ -94,11 +94,11 @@ Python provides the built-in **`socket`** module, which supports all essential n
 
 ## Author
 
-**Shourov Roy**
-B.Sc. in Computer Science Student
-📍 Shahjalal University of Science and Technology, Bangladesh
-🗓️ Year: 2025
-📧 [shourovcsesust@gmail.com](mailto:your-email@example.com)
+**Shourov Roy**<br>
+B.Sc. in Computer Science Student<br>
+📍 Shahjalal University of Science and Technology, Bangladesh<br>
+🗓️ Year: 2025<br>
+📧 [shourovcsesust@gmail.com](mailto:your-email@example.com) <br>
 🌐 [https://github.com/SRmohakal](https://github.com/your-username)
 
 ---
